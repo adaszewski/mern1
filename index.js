@@ -3,6 +3,7 @@ const app = express();
 const port = 3000;
 const hbs = require("express-handlebars");
 
+app.use(express.urlencoded({extended: true}));
 app.use(express.static("public"));
 
 app.engine("hbs", hbs.engine({ defaultLayout: "main", extname: ".hbs" }));
@@ -27,12 +28,6 @@ app.get("/mongoose", (req, res) => {
       console.log(events);
     });
 
-  let newEvent = new Event({
-    imie: "Paweł",
-    nazwisko: "Kruk",
-    kurs: "HTML",
-    lokalizacja: "Gdańsk",
-  });
 
   newEvent.save(function (err) {
     console.log("zrobione");
@@ -48,14 +43,24 @@ app.get("/event", function (req, res) {
   });
 });
 
-app.get("/event/add", function (req, res) {
-  res.render("add_event");
+app.get('/json', function(req, res){
+  event.list(function(err, events){
+      if(err) {
+          res.status(404);
+          res.json({
+              error: "brak wydarzeń"
+          });
+      } else {
+          res.json(events);
+      }
+  });
 });
 
-app.post("/event/add", function (req, res) {
-  event.add(req.body, function(err, res){
+
+app.post("/add", function (req, res) {
+  event.add(req.body, function(err){
     if(err) res.send(err);
-    res.render('event', event)
+    res.redirect("/event")
   })
 });
 

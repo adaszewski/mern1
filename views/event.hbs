@@ -1,19 +1,67 @@
-     <form method="POST" action="./add">
-    <label>imie</label><input type="text" name="imie" placeholder="Title"> <br>
-    <label>nazwisko></label><input type="text" label=nazwisko name="nazwisko" placeholder="Title"> <br>
-    <label> kurs </label> <input type="text" name="kurs" placeholder="Title"> <br>
-    <label> lokalizacja </label> <input type="text" name="lokalizacja" placeholder="Title"> <br>
-   
-    <button>Zapisz się na kurs</button>
+​<style>
+body {
+  background-color:darkgray;
+}
+
+table, th, td {
+  border: 1px solid black;
+  text-align-last: center;
+  align-self: center;
+  margin-top: 40px;
+ 
+}
+
+th {
+  background-color: black;
+  color: white;
+}
+
+form {
+  border: 1px solid black;
+  text-align-last: left;
+  margin-left: 10px;
+  margin-top: 2px;
+  margin-left: 20%;
+  background-color: cadetblue;
+}
+
+
+
+</style>    
+    
+    
+     <form style="width:50%" method="POST" action="./add">
+     <h2> Formularz zapisu kandydatów na szkolenie</h2>
+      <label>imie</label><input type="text" name="imie" placeholder="imię" />
+  <br />
+  <label>nazwisko</label> <input type="text" name="nazwisko" placeholder="nazwisko" />
+  <br />
+  <label> kurs </label>
+  <select type="text" name="kurs" placeholder="wybierz kurs">
+      <option> HTML </option>
+      <option> CSS </option>
+      <option> JavaScript </option>
+      <option> REACT </option>
+  </select> <br />
+  <label> lokalizacja </label>
+  <select type="text" name="lokalizacja" placeholder="wybierz lokalizację">
+      <option> Kraków </option>
+      <option> Warszawa </option>
+      <option> Wrocław </option>
+      <option> Gdańsk </option> 
+      </select>  <br />
+  <button>Zapisz się na kurs</button><br />
 </form>     
 
 
- <table>
+ <table style="width:80%">
   <tr>
-    <th>imię</th>
-    <th>nazwisko</th>
-    <th>kurs</th>
-     <th>lokalizacja</th>
+    <th style="width: 18p%">imię</th>
+    <th style="width: 20%">nazwisko</th>
+    <th style="width: 20%">kurs</th>
+    <th style="width: 20%">lokalizacja</th>
+    <th style="width: 22%">opcja</th>
+
   </tr>
        {{#each events}}
         <tr>
@@ -21,7 +69,7 @@
                     <td>{{nazwisko}}</td>
                     <td>{{kurs}}</td>
                     <td>{{lokalizacja}}</td>
+                    <td><button>modyfikuj</button></td>
         </tr>
       {{/each}}
-
 </article>
