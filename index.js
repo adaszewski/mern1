@@ -16,8 +16,8 @@ const event = require("./app/controllers/event.controller");
 app.get("/", (req, res) => {
   res.render("home", {
     title: "Zapisz się na kurs",
-    content: "cześć programisto",
-    id: req.params.id,
+    content: "formularz",
+    
   });
 });
 
