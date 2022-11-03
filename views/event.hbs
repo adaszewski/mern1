@@ -1,9 +1,3 @@
-
-
-
-</style>    
-    
-    
      <form style="width:50%" method="POST" action="./add">
      <h2> Formularz zapisu kandydatów na szkolenie</h2>
       <label>imie</label><input type="text" name="imie" placeholder="imię" />
@@ -44,32 +38,7 @@
                     <td>{{nazwisko}}</td>
                     <td>{{kurs}}</td>
                     <td>{{lokalizacja}}</td>
-                    <td><button>modyfikuj</button></td>
+                    <td> <a href="/event/{{_id}}"> modyfikuj </a>
+                   <a href="/event/del/{{_id}}"> usuń  </a>  </td>
         </tr>
       {{/each}}
-</article>
-
-{{!-- stylowanie --}}
-
-​<style>
-body {
-  background-color:darkgray;
-}
-
-table, th, td {
-  border: 1px solid black;
-  text-align-last: center;
-  align-self: center;
-  margin-top: 40px;
- }
-
-th {
-  background-color: black;
-  color: white;
-}
-
-form {
-  border: 1px solid black;
-  margin-top: 2px;
-  background-color: cadetblue;
-}

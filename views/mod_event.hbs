@@ -1,0 +1,25 @@
+<form style="width:50%" method="POST" action="/update/:id">
+  <h2> Formularz zapisu kandydatów na szkolenie</h2>
+  <label>imie</label><input type="text" name="imie" value="{{imie}}" />
+  <br />
+  <label>nazwisko</label>
+  <input type="text" name="nazwisko" value="{{nazwisko}}" />
+  <br />
+  <label> kurs </label>
+  <select type="text" name="kurs" value="{{kurs}}">
+    <option> HTML </option>
+    <option> CSS </option>
+    <option> JavaScript </option>
+    <option> REACT </option>
+  </select>
+  <br />
+  <label> lokalizacja </label>
+  <select type="text" name="lokalizacja" value="{{lokalizacja}}">
+    <option> Kraków </option>
+    <option> Warszawa </option>
+    <option> Wrocław </option>
+    <option> Gdańsk </option>
+  </select>
+  <br />
+  <button>modyfikuj</button><br />
+</form>

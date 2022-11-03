@@ -1,0 +1,22 @@
+​
+body {
+  background-color:darkgray;
+}
+
+table, th, td {
+  border: 1px solid black;
+  text-align-last: center;
+  align-self: center;
+  margin-top: 40px;
+ }
+
+th {
+  background-color: black;
+  color: white;
+}
+
+form {
+  border: 1px solid black;
+  margin-top: 2px;
+  background-color: cadetblue;
+}
