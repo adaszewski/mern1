@@ -41,10 +41,12 @@ app.get("/event", function (req, res) {
   });
 });
 
+
+
 app.get("/event/:id", function (req, res) {
   event.get(req.params.id, function (err, event) {
     if (err) res.send(err);
-    res.render("mod_event", event)
+    res.render("mod_event", event);
   });
 });
 
@@ -68,23 +70,19 @@ app.post("/add", function (req, res) {
   });
 });
 
-app.get('/event/del/:id', function(req, res){
-     
-  event.delete(req.params.id, function(err, post){
-      if(err) res.send(err);
-      res.redirect("/event");
-    });
-   
-  })
-app.post('/update/:id', function(req, res){
-     
-  event.update(req.params.id, req.body, function(err, event){
-      if(err) res.send(err);
-      res.redirect("/event");
+app.get("/event/del/:id", function (req, res) {
+  event.delete(req.params.id, function (err, post) {
+    if (err) res.send(err);
+    res.redirect("/event");
   });
-   
-})
+});
 
+app.post("/update/:id", function (req, res) {
+  event.update(req.params.id, req.body, function (err) {
+    if (err) res.send(err);
+    res.redirect("/event");
+  });
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

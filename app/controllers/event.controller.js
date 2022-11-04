@@ -35,13 +35,18 @@ function eventAdd(data, cb) {
 }
 
 function eventUpdate(id, data, cb) {
-  Event.updateOne({ id: id }, data, function (err, event) {
+ let modified=Date.now()
+  Event.updateOne({ _id: id }, data, function (err, event) {
     if (err) {
       cb(err);
     } else {
       cb(null, event);
     }
   });
+  Event.updateOne({ _id: id }, {zmodyfikowano: modified}, function (err) {
+    if (err) {cb(err)}
+    });
+
 }
 
 function eventDelete(id, cb) {
