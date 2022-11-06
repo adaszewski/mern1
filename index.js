@@ -1,8 +1,11 @@
 const express = require("express");
 const app = express();
-const port = 3000;
+const port = 5000;
 const hbs = require("express-handlebars");
+const cors = require('cors');
 
+app.use(express.json());
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
@@ -70,8 +73,27 @@ app.post("/add", function (req, res) {
   });
 });
 
+app.post("/json/add", function (req, res) {
+  console.log(req.body)
+  event.add(req.body, function (err) {
+    if (err) res.send(err);
+    res.json({added: true});
+    
+  });
+});
+
+app.post("/json/del/:id", function (req, res) {
+  console.log(req.body)
+  event.delete(req.body, function (err) {
+    if (err) res.send(err);
+      
+  });
+});
+
+
+
 app.get("/event/del/:id", function (req, res) {
-  event.delete(req.params.id, function (err, post) {
+  event.delete(req.params.id, function (err) {
     if (err) res.send(err);
     res.redirect("/event");
   });
