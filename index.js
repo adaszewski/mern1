@@ -19,7 +19,7 @@ const event = require("./app/controllers/event.controller");
 app.get("/", (req, res) => {
   res.render("home", {
     title: "Zapisz się na kurs",
-    content: "http://localhost:3000/event",
+    content: "http://localhost:5000/event",
   });
 });
 
