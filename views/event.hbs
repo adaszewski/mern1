@@ -5,7 +5,8 @@
   <label>nazwisko</label> <input type="text" name="nazwisko" placeholder="nazwisko" />
   <br />
   <label> kurs </label>
-  <select type="text" name="kurs" placeholder="wybierz kurs">
+  <select type="text" name="kurs" placeholder="wybierz kurs" >
+      <option> - wybierz kurs </option>
       <option> HTML </option>
       <option> CSS </option>
       <option> JavaScript </option>
@@ -13,6 +14,7 @@
   </select> <br />
   <label> lokalizacja </label>
   <select type="text" name="lokalizacja" placeholder="wybierz lokalizację">
+    <option> - wybierz lokalizację </option>
       <option> Kraków </option>
       <option> Warszawa </option>
       <option> Wrocław </option>
@@ -40,7 +42,13 @@
                     <td>{{nazwisko}}</td>
                     <td>{{kurs}}</td>
                     <td>{{lokalizacja}}</td>
-                    <td type="date">{{zapisano}}</td>
+
+                    <td> <Moment
+                          parse="YYYY-MM-DD-T-hh:mm:ss.oooo"
+                          format="YYYY-MM-DD HH:mm"
+                          utc
+                          local> {{zapisano}} </Moment> 
+                          </td>
                     <td>{{zmodyfikowano}}</td>
                     <td> <a href="/event/{{_id}}"> modyfikuj </a>
                    <a href="/event/del/{{_id}}"> usuń  </a>  </td>

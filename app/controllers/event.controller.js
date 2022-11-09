@@ -24,7 +24,6 @@ function eventGet(_id, cb) {
 
 function eventAdd(data, cb) {
   let newEvent = new Event(data);
-
   newEvent.save(function (err, event) {
     if (err) {
       cb(err);
