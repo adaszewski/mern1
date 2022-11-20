@@ -17,14 +17,12 @@ router.get("/all", function (req, res) {
   });
 });
 
-router.get("/:kurs_id", function (req, res) {
-  event.list(req.params.kurs_id, function (err, event) {
+router.get("/:id", function (req, res) {
+  event.list(req.params.id, function (err, event) {
     if (err) res.send(err);
     res.json(event);
   });
 });
-
-
 
 router.post("/add", function (req, res) {
   event.add(req.body, function (err) {

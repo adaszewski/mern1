@@ -1,13 +1,13 @@
-const Kursy = require("../../models/Kursy");
+const Kursy = require("../../models/Kursy")
 
 function kursyTable(cb) {
   Kursy.find()
     .lean()
-    .exec(function (err, events) {
+    .exec(function (err, kursy) {
       if (err) {
         cb(err);
       } else {
-        cb(null, events);
+        cb(null, kursy);
       }
     });
 }
