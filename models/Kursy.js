@@ -6,13 +6,10 @@ mongoose.connect("mongodb://localhost:27017/mern1", {
 });
 
 const schema = new mongoose.Schema({
-  imie: { type: String, required: true },
-  nazwisko: { type: String, required: true },
   kurs: { type: String, required: true },
   lokalizacja: { type: String, required: true },
-  zapisano: { type: Date, default: mongoose.now },
-  zmodyfikowano: { type: Date },
+  liczba_miejsc: { type: Number, required: true },
 });
 
 
-module.exports = mongoose.model("Event", schema);
+module.exports = mongoose.model("Kursy", schema);

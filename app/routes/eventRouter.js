@@ -11,8 +11,8 @@ router.get("", function (req, res) {
     });
   });
   
-  router.get("/:id", function (req, res) {
-    event.get(req.params.id, function (err, event) {
+  router.get("/:kurs_id", function (req, res) {
+    event.get(req.params.kurs_id, function (err, event) {
       if (err) res.send(err);
       res.render("mod_event", event);
     });
@@ -27,6 +27,13 @@ router.get("", function (req, res) {
   
   router.get("/del/:id", function (req, res) {
     event.delete(req.params.id, function (err) {
+      if (err) res.send(err);
+      res.redirect("/event");
+    });
+  });
+
+  router.post("/update/:id", function (req, res) {
+    event.update(req.params.id, req.body, function (err) {
       if (err) res.send(err);
       res.redirect("/event");
     });

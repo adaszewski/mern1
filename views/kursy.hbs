@@ -1,0 +1,34 @@
+ <form style="width:50%" method="POST" action="/kursy/add">
+     <h2> Zapisz nowy kurs</h2>
+  <label> kurs </label>
+ <input type="text" name="kurs" placeholder="wpisz nową nazwę"> </input> 
+  <br />
+  <label> lokalizacja </label>
+  <input type="text" name="lokalizacja" placeholder="wpisz lokalizację">
+  <br />
+    <label> liczba miejsc </label>
+<input type="int32" name="liczba_miejsc" placeholder="wpisz liczbę miejsc"> </input> 
+<button>Zapisz nowy kurs</button><br />
+</form>     
+
+
+ <table style="width:70%">
+  <tr>
+    <th style="width: 10%">kurs</th>
+    <th style="width: 10%">lokalizacja</th>
+    <th style="width: 10%">dostępna liczba miejsc</th>
+    <th style="width: 10%">zapisano</th>
+    <th style="width: 15%">opcje</th>
+
+  </tr>
+  
+       {{#each kursy}}
+        <tr>
+                    <td>{{kurs}}</td>
+                    <td>{{lokalizacja}}</td>
+                    <td>{{liczba_miejsc}}</td>
+                    <td> </td>
+                    <td> <a href="/kursy/{{_id}}"> modyfikuj </a>
+                   <a href="/kursy/del/{{_id}}"> usuń  </a>  </td>
+        </tr>
+      {{/each}}

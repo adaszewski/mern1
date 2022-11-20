@@ -1,4 +1,5 @@
-const Event = require("../models/Event");
+const Event = require("../../models/Event");
+const moment = require("moment");
 
 function eventTable(cb) {
   Event.find()
@@ -7,7 +8,16 @@ function eventTable(cb) {
       if (err) {
         cb(err);
       } else {
-        cb(null, events);
+        const convertedDataEvents = events.map((event) => {
+          return {
+            ...event,
+            zapisano: moment(event.zapisano).format("YYYY-MM-DD HH:mm"),
+            zmodyfikowano: moment(event.zmodyfikowano).format(
+              "YYYY-MM-DD HH:mm"
+            ),
+          };
+        });
+        cb(null, convertedDataEvents);
       }
     });
 }
@@ -34,7 +44,7 @@ function eventAdd(data, cb) {
 }
 
 function eventUpdate(id, data, cb) {
- let modified=Date.now()
+  let modified = Date.now();
   Event.updateOne({ _id: id }, data, function (err, event) {
     if (err) {
       cb(err);
@@ -42,10 +52,11 @@ function eventUpdate(id, data, cb) {
       cb(null, event);
     }
   });
-  Event.updateOne({ _id: id }, {zmodyfikowano: modified}, function (err) {
-    if (err) {cb(err)}
-    });
-
+  Event.updateOne({ _id: id }, { zmodyfikowano: modified }, function (err) {
+    if (err) {
+      cb(err);
+    }
+  });
 }
 
 function eventDelete(id, cb) {
